@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Classes from "../styles/Header.module.css";
+import { connect } from "react-redux";
 
 export class Header extends Component {
   render() {
@@ -9,7 +10,7 @@ export class Header extends Component {
 
     //returning JSX
     return (
-      <Header>
+      <header>
         <div className={`container-fluid ${Header}`}>
           <div className="row">
             <div className={`col-md-4 ${TextLeft}`}>
@@ -31,7 +32,7 @@ export class Header extends Component {
                   className="fas fa-shopping-cart"
                   style={{ position: "relative" }}
                 >
-                  <div className={CartCount}>0</div>
+                  <div className={CartCount}>{this.props.cartItems}</div>
                 </i>
               </NavLink>
             </div>
@@ -41,20 +42,24 @@ export class Header extends Component {
               <img src="/assets/logo.png" alt="Pizzaria Logo" />
             </div>
             <div className="col-md-4 mobile-hidden">
-              <NavLink to="/cart" exact>
+              <Link to="/cart">
                 <i
                   className="fas fa-shopping-cart fa-2x"
                   style={{ position: "relative" }}
                 >
-                  <div className={CartCount}>0</div>
+                  <div className={CartCount}>{this.props.cartItems}</div>
                 </i>
-              </NavLink>
+              </Link>
             </div>
           </div>
         </div>
-      </Header>
+      </header>
     );
   }
 }
-
-export default Header;
+const stateToProps = (state) => {
+  return {
+    cartItems: state.cartItems,
+  };
+};
+export default connect(stateToProps)(Header);

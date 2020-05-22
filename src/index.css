@@ -18,6 +18,7 @@ code {
 
 a:hover {
   text-decoration: none;
+  color: white !important;
 }
 
 .active {
@@ -34,4 +35,13 @@ a:hover {
   .mobile-hidden {
     display: none;
   }
+}
+
+.Orange {
+  color: #f3a531 !important;
+}
+
+button:focus {
+  outline: none;
+  border: none;
 }

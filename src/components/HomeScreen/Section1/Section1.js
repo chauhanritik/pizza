@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Classes from "../../../styles/HomeScreen/Section1/Section1.module.css";
-
+import { Link } from "react-router-dom";
 export class Section1 extends Component {
   render() {
     const {
@@ -35,6 +35,11 @@ export class Section1 extends Component {
                   style={{ right: "5%", top: `70%` }}
                 />
               </center>
+            </div>
+            <div className="col-md-12 text-center">
+              <Link to="/menu">
+                <button>See Pizzas</button>
+              </Link>
             </div>
             <div className="col-md-12 text-center">
               <img
