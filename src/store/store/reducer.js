@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actions";
-import { getItem, parse } from "../../constants/constants";
+import { getItem, parse, format } from "../../constants/constants";
 
 //..........................................................
 
@@ -15,10 +15,14 @@ const calculateCheckoutPrice = (data) => {
   var sum = 0;
   //eslint-disable-next-line
   data.map((ele) => {
-    sum += ele.checkoutPrice;
-  });
+    var price = ele.checkoutPrice;
+    // var price = parseFloat(
+    //   ele.checkoutPrice.replace(/\s/g, "").replace(",", "")
+    // ).toFixed(1);
 
-  return sum.toFixed(2);
+    sum = parseFloat(sum) + parseFloat(price);
+  });
+  return format(sum);
 };
 
 //..........................................................
@@ -67,7 +71,7 @@ const reducer = (state = initialState, action) => {
       var currentPizzaData = {
         ...oldPizzaData,
         quantity,
-        checkoutPrice: state.checkout[id].minCheckoutPrice * quantity,
+        checkoutPrice: format(state.checkout[id].minCheckoutPrice * quantity),
       };
       oldCheckout[id] = currentPizzaData;
       var newCheckout = [...oldCheckout];
@@ -75,6 +79,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         checkout: newCheckout,
+        localData: cartItems,
         checkoutPrice: calculateCheckoutPrice(newCheckout),
       };
     }
@@ -83,6 +88,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         checkout: action.value,
+        localData: cartItems,
         checkoutPrice: calculateCheckoutPrice(action.value),
       };
 
@@ -106,6 +112,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         checkout: newCheckout,
+        localData: cartItems,
         checkoutPrice: calculateCheckoutPrice(newCheckout),
       };
     }

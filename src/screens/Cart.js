@@ -9,6 +9,7 @@ import {
   PLACE_ORDER_API,
   PRODUCTS_API,
   DELIVERY_CHARGES,
+  format,
 } from "../constants/constants";
 
 export class Cart extends Component {
@@ -51,7 +52,7 @@ export class Cart extends Component {
             //eslint-disable-next-line
             ele.sizes.map((sizes) => {
               if (sizes.size === Element.size) {
-                price = sizes.price * getConversionRate().toFixed(2);
+                price = format(sizes.price * getConversionRate());
               }
             });
 
@@ -62,7 +63,7 @@ export class Cart extends Component {
                 quantity: Element.quantity,
                 size: Element.size,
                 minCheckoutPrice: price,
-                checkoutPrice: price * Element.quantity,
+                checkoutPrice: format(price * Element.quantity),
               },
             ];
             AddCheckout(checkout);
@@ -119,10 +120,11 @@ export class Cart extends Component {
       return currency === "euros" ? conversionRate : 1;
     };
     const deliveryCharges = () => {
-      return (DELIVERY_CHARGES * getConversionRate()).toFixed(2);
+      return format(DELIVERY_CHARGES * getConversionRate());
     };
     const placeOrder = () => {
       this.setState({ loading: true });
+      localStorage.setItem("mobile", mobile);
       var order = [];
       //eslint-disable-next-line
       localData.map((element, index) => {
@@ -139,9 +141,10 @@ export class Cart extends Component {
         address: `${address} ${pincode}`,
         order: order,
         currency: currency,
-        totalPrice: (
+        totalPrice: format(
           parseFloat(checkoutPrice) + parseFloat(deliveryCharges())
         ).toString(),
+        deliveryCharge: deliveryCharges.toString(),
       };
 
       axios
@@ -152,7 +155,7 @@ export class Cart extends Component {
             orderMessage: "done",
           });
           setTimeout(() => {
-            window.location.href = "/";
+            window.location.href = "/myOrders";
           }, 3000);
         })
         .catch(() => {
@@ -160,7 +163,7 @@ export class Cart extends Component {
             orderMessage: "Unable to Place Order - Try Again Later",
           });
           setTimeout(() => {
-            window.location.href = "/";
+            window.location.href = "/myOrders";
           }, 3000);
         });
     };
@@ -212,7 +215,13 @@ export class Cart extends Component {
                     <ItemsList
                       data={checkout}
                       alterQuantity={AlterQuantity}
-                      alterSize={AlterSize}
+                      alterSize={(size, minCheckoutPrice, id) => {
+                        AlterSize(
+                          size,
+                          format(minCheckoutPrice * getConversionRate()),
+                          id
+                        );
+                      }}
                       deletePizza={DeletePizza}
                       changeAddress={this.changeAddress}
                       changeEmail={this.changeEmail}

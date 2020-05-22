@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Classes from "../../styles/Cart/Overview.module.css";
+import { format } from "../../constants/constants";
 
 class Overview extends Component {
   state = {
@@ -50,7 +51,7 @@ class Overview extends Component {
           <b>
             {(conversionRate === 1 ? "$" : "€") +
               " " +
-              (parseFloat(checkoutPrice) + parseFloat(deliveryCharges()))}
+              format(parseFloat(checkoutPrice) + parseFloat(deliveryCharges()))}
           </b>
         </div>
         <hr />

@@ -20,3 +20,10 @@ export const parse = (value) => {
 export const stringify = (value) => {
   return JSON.stringify(value);
 };
+
+export const format = (num) => num.toFixed(2);
+
+// num.toLocaleString("en-US", {
+//   minimumFractionDigits: 2,
+//   maximumFractionDigits: 2,
+// }

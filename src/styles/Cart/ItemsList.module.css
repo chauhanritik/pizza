@@ -35,8 +35,9 @@
 }
 .Active {
   color: #222;
-  border-bottom: 2px solid #222;
-
+  background-color: rgb(0, 0, 0, 0.1);
+  color: rgb(0, 0, 0, 0.7);
+  border-radius: 10px;
   padding: 5px 10px;
   cursor: unset !important;
 }
@@ -69,6 +70,9 @@
 @media screen and (max-width: 747px) {
   .Sizes {
     margin: 15px 0;
+  }
+  .Description {
+    clear: both;
   }
 }
 .Button {

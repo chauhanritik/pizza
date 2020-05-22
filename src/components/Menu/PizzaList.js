@@ -3,6 +3,7 @@ import Classes from "../../styles/Menu/PizzaList.module.css";
 import { connect } from "react-redux";
 import * as ActionTypes from "../../store/actions/actions";
 import { storeItem } from "../../store/actions/actions";
+import { format } from "../../constants/constants";
 const PizzaList = (props) => {
   const {
     Pizza,
@@ -38,8 +39,7 @@ const PizzaList = (props) => {
                     &nbsp;&nbsp;&nbsp;
                     {props.currency === "dollars"
                       ? "$" + element.sizes[0].price
-                      : "€" +
-                        (element.sizes[0].price * conversionRate).toFixed(1)}
+                      : "€" + format(element.sizes[0].price * conversionRate)}
                   </div>
                 </div>
 

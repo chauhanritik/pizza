@@ -9,7 +9,7 @@ export class MyOrders extends Component {
   };
   componentDidMount() {
     axios
-      .post(MYORDERS_API, { mobile: "7408159968" })
+      .post(MYORDERS_API, { mobile: localStorage.getItem("mobile") })
       .then((Response) => {
         this.setState({ data: Response.data.result });
       })

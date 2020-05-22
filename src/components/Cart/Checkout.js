@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Classes from "../../styles/Cart/Checkout.module.css";
 import ReactFormInputValidation from "react-form-input-validation";
-import { Link } from "react-router-dom";
+
 export class Checkout extends Component {
   constructor(props) {
     super(props);
