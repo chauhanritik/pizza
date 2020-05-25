@@ -144,8 +144,9 @@ export class Cart extends Component {
         totalPrice: format(
           parseFloat(checkoutPrice) + parseFloat(deliveryCharges())
         ).toString(),
-        deliveryCharge: deliveryCharges.toString(),
+        deliveryCharge: deliveryCharges().toString(),
       };
+      console.log(data);
 
       axios
         .post(PLACE_ORDER_API, data)
@@ -162,9 +163,9 @@ export class Cart extends Component {
           this.setState({
             orderMessage: "Unable to Place Order - Try Again Later",
           });
-          setTimeout(() => {
-            window.location.href = "/myOrders";
-          }, 3000);
+          // setTimeout(() => {
+          //   window.location.href = "/myOrders";
+          // }, 3000);
         });
     };
 

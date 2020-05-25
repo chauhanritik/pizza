@@ -55,10 +55,22 @@ export class OrdersList extends Component {
                   {Element.currency === "dollars" ? "$" : null}
                   {Element.currency === "euros" ? "€" : null}
                   &nbsp; {Element.totalPrice}
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: "100",
+                      marginTop: "-10px",
+                    }}
+                  >
+                    <br />
+                    {Element.currency === "dollars" ? "$" : null}{" "}
+                    {Element.currency === "euros" ? "€" : null}
+                    {Element.deliveryCharge} Delivery Charges
+                  </span>
                 </div>
               </div>
               <br />
-              <hr />
+              <hr style={{ marginTop: "3rem" }} />
             </div>
           );
         })}

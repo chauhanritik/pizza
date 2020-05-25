@@ -11,6 +11,8 @@ export class MyOrders extends Component {
     axios
       .post(MYORDERS_API, { mobile: localStorage.getItem("mobile") })
       .then((Response) => {
+        console.log(Response.data.result);
+
         this.setState({ data: Response.data.result });
       })
       .catch((error) => {
