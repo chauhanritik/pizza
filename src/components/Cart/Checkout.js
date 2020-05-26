@@ -49,6 +49,7 @@ export class Checkout extends Component {
                 <input
                   type="text"
                   name="email"
+                  placeholder="Enter your Email"
                   value={this.state.fields.email}
                   className={this.state.errors.email ? Error : null}
                   onChange={(event) => {
@@ -64,6 +65,7 @@ export class Checkout extends Component {
                   type="text"
                   value={this.state.fields.name}
                   name="name"
+                  placeholder="Enter your Name"
                   className={this.state.errors.name ? Error : null}
                   onChange={(event) => {
                     this.form.handleChangeEvent(event);
@@ -78,6 +80,7 @@ export class Checkout extends Component {
                   type="Number"
                   value={this.state.fields.mobile}
                   name="mobile"
+                  placeholder="Enter your Mobile"
                   className={this.state.errors.mobile ? Error : null}
                   onChange={(event) => {
                     this.form.handleChangeEvent(event);
@@ -105,6 +108,7 @@ export class Checkout extends Component {
                 PinCode : *
                 <input
                   type="Address"
+                  placeholder="Enter your Pincode"
                   value={this.state.fields.pincode}
                   className={this.state.errors.pincode ? Error : null}
                   name="pincode"
