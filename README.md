@@ -26,6 +26,9 @@ Step 2) Login with Username :<b>cpthareja@gmail.com</b> and password : <b>123456
 Step 3) Click on Product / Product options as per your choice. <br/><br/>
 Step 4) Start Editing ! : )
 
+### `How to view all orders in Admin panel? ?`
+
+
 ## FAQs
 
 ### `How my orders are showing ?`
@@ -36,8 +39,9 @@ displayed in 'My Orders'.
 `Admin Panel` provides a feature to change the currency <br/>
 rate.
 
+### `How to access the database to view DB structure?`
 
-## For React UI app
+## For ReactJS App
 
 In the project directory, you can run:
 
