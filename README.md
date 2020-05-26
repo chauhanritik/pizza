@@ -17,7 +17,7 @@ Step 1) Go to https://pizzaritik.firebaseapp.com/ <br/><br/>
 Step 2) Click Our Menu on the Header<br/><br/>
 Step 3) Choose size and your favourite Pizza<br/><br/>
 Step 4) Click Go to Cart showing on the bottom of the Screen.<br/><br/>
-Step 5) Choose Quantity of your orders and click `Proceed to Checkout`
+Step 5) Choose Quantity of your orders and click `Proceed to Checkout`<br/><br/>
 Step 6) Enter your details, and place Order.
 
 ### `How to Edit Pizzas ?`
@@ -31,6 +31,10 @@ Step 4) Start Editing ! : )
 ### `How my orders are showing ?`
 My Orders is using last mobile number used for placing <br/>
 the orders as there is no <b>Login Available</b>
+
+### `How to change Coversion Rate for Euros ?`
+`Admin Panel` provides a feature to change the currency <br/>
+rate.
 
 
 ## Available Scripts
