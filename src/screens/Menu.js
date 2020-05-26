@@ -14,8 +14,14 @@ export class Menu extends Component {
   };
   componentDidMount() {
     axios.get(PRODUCTS_API).then((res) => {
+      var changedData = res.data.result;
+      //eslint-disable-next-line
+      res.data.result.map((element, index) => {
+        changedData[index] = { ...element, sizeIndex: 0 };
+      });
+
       this.setState({
-        data: res.data.result,
+        data: changedData,
         conversionRate: res.data.conversionRate,
         loading: false,
       });
@@ -25,6 +31,15 @@ export class Menu extends Component {
     const { data, conversionRate, loading } = this.state;
     const { Menu, Active } = Classes;
 
+    const alterSize = (Index, sizeIndex) => {
+      var changedData = data;
+
+      changedData[Index] = { ...changedData[Index], sizeIndex: sizeIndex };
+
+      this.setState({
+        data: changedData,
+      });
+    };
     return (
       <section className={Menu}>
         <div className="container-fluid">
@@ -59,7 +74,11 @@ export class Menu extends Component {
               <br />
             </div>
             {loading === false ? (
-              <PizzaList data={data} conversionRate={conversionRate} />
+              <PizzaList
+                data={data}
+                conversionRate={conversionRate}
+                alterSize={alterSize}
+              />
             ) : (
               <></>
             )}

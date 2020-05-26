@@ -113,7 +113,6 @@ export class Cart extends Component {
       checkout,
       currency,
       DeletePizza,
-      AlterSize,
       localData,
     } = this.props;
     const getConversionRate = () => {
@@ -216,13 +215,6 @@ export class Cart extends Component {
                     <ItemsList
                       data={checkout}
                       alterQuantity={AlterQuantity}
-                      alterSize={(size, minCheckoutPrice, id) => {
-                        AlterSize(
-                          size,
-                          format(minCheckoutPrice * getConversionRate()),
-                          id
-                        );
-                      }}
                       deletePizza={DeletePizza}
                       changeAddress={this.changeAddress}
                       changeEmail={this.changeEmail}
@@ -238,6 +230,7 @@ export class Cart extends Component {
                       conversionRate={getConversionRate()}
                       checkoutPrice={checkoutPrice}
                       deliveryCharges={deliveryCharges}
+                      currency={currency}
                     />
                   </div>
                 </>
@@ -254,9 +247,6 @@ const dispatchToProps = (dispatch) => {
   return {
     AlterQuantity: (quantity, id) => {
       dispatch(actionTypes.alterQuantity(quantity, id));
-    },
-    AlterSize: (size, minCheckoutPrice, id) => {
-      dispatch(actionTypes.alterSize(size, minCheckoutPrice, id));
     },
     AddCheckout: (value) => {
       dispatch(actionTypes.addCheckout(value));

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Classes from "../../styles/Cart/ItemsList.module.css";
 export class ItemsList1 extends Component {
   render() {
-    var { data, alterQuantity, alterSize, deletePizza } = this.props;
+    var { data, alterQuantity, deletePizza } = this.props;
     const {
       Pizza,
       Image,
@@ -33,22 +33,7 @@ export class ItemsList1 extends Component {
               <b>{element.name}</b>
               <div className={`text-muted`} style={{ float: "right" }}>
                 <div className={Sizes}>
-                  Size : &nbsp;
-                  {element.sizes.map((Size, index) => {
-                    return (
-                      <>
-                        <span
-                          className={element.size === Size.size ? Active : null}
-                          key={index}
-                          onClick={() => {
-                            alterSize(Size.size, Size.price, Index);
-                          }}
-                        >
-                          {Size.size}
-                        </span>
-                      </>
-                    );
-                  })}
+                  <span className={Active}>{element.size}</span>
                 </div>
               </div>
             </div>

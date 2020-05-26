@@ -3,18 +3,18 @@ export const SHOW_ALERT = "SHOW_ALERT";
 export const ADD_ITEM = "ADD_ITEM";
 export const SET_CURRENCY = "SET_CURRENCY";
 export const ALTER_QUANTITY = "ALTER_QUANTITY";
-export const ALTER_SIZE = "ALTER_SIZE";
 export const ADD_CHECKOUT = "ADD_CHECKOUT";
 export const DELETE_PIZZA = "DELETE_PIZZA";
 export const DELETE_LOCALDATA = "DELETE_LOCALDATA";
-export const storeItem = (id) => {
+
+export const storeItem = (id, size) => {
   return function (dispatch) {
     var cartArray = [];
     if (!getItem("Cart")) {
       setItem("Cart", stringify(cartArray));
     }
     cartArray = parse(getItem("Cart"));
-    var updatedCart = [...cartArray, { id: id, size: "Small", quantity: 1 }];
+    var updatedCart = [...cartArray, { id: id, size: size, quantity: 1 }];
     setItem("Cart", stringify(updatedCart));
     dispatch({ type: ADD_ITEM });
   };
@@ -38,16 +38,6 @@ export const alterQuantity = (quantity, id) => {
   setItem("Cart", stringify(updatedCart));
   return function (dispatch) {
     dispatch({ type: ALTER_QUANTITY, quantity, id });
-  };
-};
-
-export const alterSize = (size, minCheckoutPrice, id) => {
-  var cartArray = parse(getItem("Cart"));
-  cartArray[id] = { ...cartArray[id], size: size };
-  var updatedCart = [...cartArray];
-  setItem("Cart", stringify(updatedCart));
-  return function (dispatch) {
-    dispatch({ type: ALTER_SIZE, size, minCheckoutPrice, id });
   };
 };
 

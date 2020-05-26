@@ -13,10 +13,12 @@ const PizzaList = (props) => {
     Price,
     Description,
     Button,
-    Size,
+
+    Active,
     Sizes,
   } = Classes;
-  const { data, conversionRate } = props;
+  const { data, conversionRate, alterSize } = props;
+
   return (
     <>
       {Object.values(data).map((element, index) => {
@@ -34,38 +36,59 @@ const PizzaList = (props) => {
               <div className={Information}>
                 <div className={Name}>
                   <b>{element.name}</b>
+                  <div className={Sizes}>
+                    <br />
+                    Size : &nbsp;
+                    {element.sizes.map((Size, Index) => {
+                      return (
+                        <>
+                          <span
+                            className={
+                              element.sizeIndex === Index ? Active : null
+                            }
+                            key={index}
+                            onClick={() => {
+                              alterSize(index, Index);
+                            }}
+                          >
+                            {Size.size}
+                          </span>
+                        </>
+                      );
+                    })}
+                  </div>
                   <div className={`${Price} text-muted`}>
-                    <div className={Size}>{element.sizes[0].size}</div>
-                    &nbsp;&nbsp;&nbsp;
-                    {props.currency === "dollars"
-                      ? "$" + element.sizes[0].price
-                      : "€" + format(element.sizes[0].price * conversionRate)}
+                    <b style={{ float: "right", color: "#222" }}>
+                      <br />
+                      &nbsp;&nbsp;&nbsp;
+                      {props.currency === "dollars"
+                        ? "$" + element.sizes[element.sizeIndex].price
+                        : "€" +
+                          format(
+                            element.sizes[element.sizeIndex].price *
+                              conversionRate
+                          )}
+                    </b>
                   </div>
                 </div>
 
                 <div className={`${Description} text-muted`}>
                   {element.description}
-                  <div className={Sizes}>
-                    Sizes Available :
-                    {element.sizes.map((Size, index) => {
-                      return index === element.sizes.length - 1 ? (
-                        <span key={index}>{Size.size} </span>
-                      ) : (
-                        <span key={index}>{Size.size} |</span>
-                      );
-                    })}
-                  </div>
-                  <button
-                    className={Button}
-                    onClick={() => {
-                      props.storeItem(element.id);
-                    }}
-                  >
-                    Add To Cart
-                  </button>
+                  <div className={Sizes}></div>
                 </div>
               </div>
             </div>
+            <button
+              className={Button}
+              onClick={() => {
+                props.storeItem(
+                  element.id,
+                  element.sizes[element.sizeIndex].size
+                );
+              }}
+            >
+              Add To Cart
+            </button>
           </div>
         );
       })}
@@ -77,8 +100,8 @@ const dispatchToProps = (dispatch) => {
     ShowAlert: () => {
       dispatch({ type: ActionTypes.SHOW_ALERT });
     },
-    storeItem: (id) => {
-      dispatch(storeItem(id));
+    storeItem: (id, size) => {
+      dispatch(storeItem(id, size));
     },
   };
 };

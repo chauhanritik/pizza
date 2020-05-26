@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Classes from "../../styles/Cart/Overview.module.css";
-import { format } from "../../constants/constants";
+import { format, getCurrencySymbol } from "../../constants/constants";
 
 class Overview extends Component {
   state = {
@@ -9,7 +9,7 @@ class Overview extends Component {
   render() {
     const { Overview, ItemsList, TotalPrice, SubPrice } = Classes;
 
-    const { data, conversionRate, checkoutPrice, deliveryCharges } = this.props;
+    const { data, currency, checkoutPrice, deliveryCharges } = this.props;
 
     return (
       <div className={Overview}>
@@ -24,9 +24,7 @@ class Overview extends Component {
                   <i className="fas fa-pizza-slice"></i>
                   {element.name}
                   <b>
-                    {(conversionRate === 1 ? "$" : "€") +
-                      " " +
-                      element.checkoutPrice}
+                    {getCurrencySymbol(currency) + " " + element.checkoutPrice}
                   </b>
                   <p className="text-muted">
                     {element.size} - {element.quantity} Quantity
@@ -39,17 +37,17 @@ class Overview extends Component {
         <hr />
         <div className={SubPrice}>
           Sub Amount
-          <b>{(conversionRate === 1 ? "$" : "€") + " " + checkoutPrice}</b>
+          <b>{getCurrencySymbol(currency) + " " + checkoutPrice}</b>
         </div>
         <div className={SubPrice}>
           Delivery Charges
-          <b>{(conversionRate === 1 ? "$" : "€") + " " + deliveryCharges()}</b>
+          <b>{getCurrencySymbol(currency) + " " + deliveryCharges()}</b>
         </div>
         <hr />
         <div className={TotalPrice}>
           Total Amount{" "}
           <b>
-            {(conversionRate === 1 ? "$" : "€") +
+            {getCurrencySymbol(currency) +
               " " +
               format(parseFloat(checkoutPrice) + parseFloat(deliveryCharges()))}
           </b>

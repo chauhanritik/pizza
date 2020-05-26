@@ -23,7 +23,12 @@ export const stringify = (value) => {
 
 export const format = (num) => num.toFixed(2);
 
-// num.toLocaleString("en-US", {
-//   minimumFractionDigits: 2,
-//   maximumFractionDigits: 2,
-// }
+export const getCurrencySymbol = (currency) => {
+  if (currency === "dollars") {
+    return "$";
+  } else if (currency === "euros") {
+    return "€";
+  } else {
+    return "$";
+  }
+};

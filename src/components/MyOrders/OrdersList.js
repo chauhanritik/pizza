@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Classes from "../../styles/MyOrders/OrdersList.module.css";
+import { getCurrencySymbol } from "../../constants/constants";
 export class OrdersList extends Component {
   render() {
     const { data } = this.props;
@@ -40,8 +41,7 @@ export class OrdersList extends Component {
                         <div className={Quantity}>Qty : {ele.quantity}</div>
                         <div className={Price}>
                           <b>
-                            {Element.currency === "dollars" ? "$" : null}
-                            {Element.currency === "euros" ? "€" : null}
+                            {getCurrencySymbol(Element.currency)}
                             &nbsp;
                             {ele.product_order_price}
                           </b>
@@ -58,14 +58,12 @@ export class OrdersList extends Component {
                       marginTop: "-10px",
                     }}
                   >
-                    {Element.currency === "dollars" ? "$" : null}{" "}
-                    {Element.currency === "euros" ? "€" : null}{" "}
+                    {getCurrencySymbol(Element.currency)}
                     {Element.deliveryCharge} Delivery Charges
                   </span>
                   <br />
                   Total : &nbsp;
-                  {Element.currency === "dollars" ? "$" : null}
-                  {Element.currency === "euros" ? "€" : null}
+                  {getCurrencySymbol(Element.currency)}
                   &nbsp; {Element.totalPrice}
                 </div>
               </div>

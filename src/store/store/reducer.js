@@ -1,31 +1,22 @@
 import * as actionTypes from "../actions/actions";
 import { getItem, parse, format } from "../../constants/constants";
 
-//..........................................................
-
 var cartItems = getItem("Cart") !== null ? parse(getItem("Cart")) : [];
 
 const cartLength = Math.max(0, cartItems.length);
 
-//..........................................................
 const currency = getItem("Currency") ? getItem("Currency") : "dollars";
 
-//..........................................................
 const calculateCheckoutPrice = (data) => {
   var sum = 0;
   //eslint-disable-next-line
   data.map((ele) => {
     var price = ele.checkoutPrice;
-    // var price = parseFloat(
-    //   ele.checkoutPrice.replace(/\s/g, "").replace(",", "")
-    // ).toFixed(1);
-
     sum = parseFloat(sum) + parseFloat(price);
   });
   return format(sum);
 };
 
-//..........................................................
 const initialState = {
   cartItems: cartLength,
   localData: cartItems,
@@ -37,7 +28,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   //GLOBAL TERMS
   var cartItems = getItem("Cart") !== null ? parse(getItem("Cart")) : [];
-
   var oldCheckout = state.checkout;
   var { id } = action;
   switch (action.type) {
@@ -91,31 +81,6 @@ const reducer = (state = initialState, action) => {
         localData: cartItems,
         checkoutPrice: calculateCheckoutPrice(action.value),
       };
-
-    case actionTypes.ALTER_SIZE: {
-      const { size, minCheckoutPrice } = action;
-      //eslint-disable-next-line
-      var oldPizzaData = state.checkout[id];
-      //eslint-disable-next-line
-      var currentPizzaData = {
-        ...oldPizzaData,
-        size: size,
-        minCheckoutPrice,
-        checkoutPrice: minCheckoutPrice * state.checkout[id].quantity,
-      };
-      //eslint-disable-next-line
-
-      oldCheckout[id] = currentPizzaData;
-      //eslint-disable-next-line
-      var newCheckout = [...oldCheckout];
-
-      return {
-        ...state,
-        checkout: newCheckout,
-        localData: cartItems,
-        checkoutPrice: calculateCheckoutPrice(newCheckout),
-      };
-    }
 
     case actionTypes.DELETE_PIZZA: {
       //eslint-disable-next-line
