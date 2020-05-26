@@ -1,8 +1,37 @@
+An online Pizza order `Demo App`
+### `Features`
+1. No Login needed <br/>
+2. Placing Orders<br/>
+3. Duo Currency feature - Euros `€` and Dollars `$` <br/>
+4. My orders
+
 ### `Live Demo`
 https://pizzaritik.firebaseapp.com/
 
 ### `Admin Panel` 
 http://pizza.intellemind.com/pizza/public/admin/
+
+
+### `How to Place Order ?`
+Step 1) Go to https://pizzaritik.firebaseapp.com/ <br/><br/>
+Step 2) Click Our Menu on the Header<br/><br/>
+Step 3) Choose size and your favourite Pizza<br/><br/>
+Step 4) Click Go to Cart showing on the bottom of the Screen.<br/><br/>
+Step 5) Choose Quantity of your orders and click `Proceed to Checkout`
+Step 6) Enter your details, and place Order.
+
+### `How to Edit Pizzas ?`
+Step 1) Go to http://pizza.intellemind.com/pizza/public/admin/ <br/><br/>
+Step 2) Login with Username :<b>cpthareja@gmail.com</b> and password : <b>12345678</b> <br/><br/>
+Step 3) Click on Product / Product options as per your choice. <br/><br/>
+Step 4) Start Editing ! : )
+
+## FAQs
+
+### `How my orders are showing ?`
+My Orders is using last mobile number used for placing <br/>
+the orders as there is no <b>Login Available</b>
+
 
 ## Available Scripts
 
@@ -41,32 +70,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
