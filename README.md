@@ -29,15 +29,15 @@ Step 4) Start Editing ! : )
 ## FAQs
 
 ### `How my orders are showing ?`
-My Orders is using last mobile number used for placing <br/>
-the orders as there is no <b>Login Available</b>
+All orders placed using the last used phone number are <br/><br/>
+displayed in 'My Orders'.
 
 ### `How to change Coversion Rate for Euros ?`
 `Admin Panel` provides a feature to change the currency <br/>
 rate.
 
 
-## Available Scripts
+## For React UI app
 
 In the project directory, you can run:
 
