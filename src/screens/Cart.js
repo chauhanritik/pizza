@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Classes from "../styles/Cart/Cart.module.css";
+//Import Items to be shown on the left side of Checkout page.
 import ItemsList from "../components/Cart/ItemsList";
+//Import Order Summary to be shown on the right side of Checkout page.
 import Overview from "../components/Cart/Overview";
+//Import Redux Actions
 import * as actionTypes from "../store/actions/actions";
 import axios from "../hoc/axios";
 import {
@@ -10,7 +13,7 @@ import {
   PRODUCTS_API,
   DELIVERY_CHARGES,
   format,
-} from "../constants/constants";
+} from "../constants/constants"; //Constants are used for the terms need to be used several times in our code
 
 export class Cart extends Component {
   state = {
@@ -145,7 +148,6 @@ export class Cart extends Component {
         ).toString(),
         deliveryCharge: deliveryCharges().toString(),
       };
-      console.log(data);
 
       axios
         .post(PLACE_ORDER_API, data)

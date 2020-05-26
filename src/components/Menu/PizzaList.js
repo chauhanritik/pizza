@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as ActionTypes from "../../store/actions/actions";
 import { storeItem } from "../../store/actions/actions";
 import { format } from "../../constants/constants";
+
 const PizzaList = (props) => {
   const {
     Pizza,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Classes from "../../styles/Cart/ItemsList.module.css";
 import { Route } from "react-router";
+//ITEM COMPONENT
 import ItemsList1 from "./ItemsList1";
 import Checkout from "./Checkout";
 import { Link } from "react-router-dom";

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Classes from "../styles/Menu/Menu.module.css";
+//Import a component that shows the Pizzas available in our Menu
 import PizzaList from "../components/Menu/PizzaList";
 import { connect } from "react-redux";
 import { setCurrency } from "../store/actions/actions";
-import axios from "../hoc/axios";
 import { PRODUCTS_API } from "../constants/constants";
+import axios from "../hoc/axios";
 
 export class Menu extends Component {
   state = {

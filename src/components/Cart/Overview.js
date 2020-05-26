@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Classes from "../../styles/Cart/Overview.module.css";
+//CONSTANTS
 import { format, getCurrencySymbol } from "../../constants/constants";
 
 class Overview extends Component {

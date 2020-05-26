@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Classes from "../../styles/Cart/Checkout.module.css";
+//LIBRARY FOR form Validations
 import ReactFormInputValidation from "react-form-input-validation";
 
 export class Checkout extends Component {
+  //
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +18,8 @@ export class Checkout extends Component {
       errors: {},
     };
   }
+
+  //
   render() {
     this.form = new ReactFormInputValidation(this);
     this.form.useRules({

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Classes from "../../styles/MyOrders/OrdersList.module.css";
 import { getCurrencySymbol } from "../../constants/constants";
+
 export class OrdersList extends Component {
   render() {
     const { data } = this.props;
