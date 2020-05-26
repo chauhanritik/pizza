@@ -1,11 +1,8 @@
-### Live Demo
+### `Live Demo`
 https://pizzaritik.firebaseapp.com/
 
-### Admin Panel 
+### `Admin Panel` 
 http://pizza.intellemind.com/pizza/public/admin/
-
-## Features available in Admin Panel 
-# Add/ Delete / Edit Products
 
 ## Available Scripts
 
